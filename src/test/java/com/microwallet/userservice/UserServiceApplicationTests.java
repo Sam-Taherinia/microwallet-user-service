@@ -1,4 +1,4 @@
-package com.microwallet.user_service;
+package com.microwallet.userservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

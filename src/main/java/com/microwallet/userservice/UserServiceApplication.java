@@ -1,4 +1,4 @@
-package com.microwallet.user_service;
+package com.microwallet.userservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -3,3 +3,12 @@ spring:
     name: user-service
   profiles:
     active: dev
+  mongodb:
+    host: localhost
+    port: 27017
+    database: userdb
+    username: root
+    password: example
+    authentication-database: admin
+server:
+  port: 8081
