@@ -6,6 +6,7 @@ import com.microwallet.userservice.dto.CreateUserRequest;
 import com.microwallet.userservice.dto.UserResponse;
 import com.microwallet.userservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -15,15 +16,18 @@ import java.time.Instant;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public UserResponse createUser(CreateUserRequest request){
 
         if (userRepository.existsByEmail(request.email()))
                 throw new RuntimeException("Email already exists");
 
+        String hashedPassword = passwordEncoder.encode(request.password());
+
         User user = User.builder()
                 .email(request.email())
-                .password(request.password())
+                .password(hashedPassword)
                 .firstName(request.firstName())
                 .lastName(request.lastName())
                 .createdAt(Instant.now())
