@@ -3,6 +3,7 @@ package com.microwallet.userservice.domain;
 import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Instant;
@@ -18,6 +19,7 @@ public class User {
     @Id
     private ObjectId id; // Mongo ObjectId
 
+    @Indexed(unique = true)
     private String email; // Unique email address
 
     private String password; // Hashed password
